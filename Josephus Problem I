@@ -1,0 +1,42 @@
+#include<bits/stdc++.h>
+using namespace std;
+void solve()
+{
+    int n;cin>>n;vector<int>child(n);
+    for(int i=0; i<n; i++)
+    {
+        child[i]=i+1;
+    }
+    while(child.size()>1){
+        vector<int>ans;
+          for(int i=0; i<child.size(); i++)
+          {
+              if(i%2==1){
+                cout<<child[i]<<" ";
+              }
+              else{
+                ans.push_back(child[i]);
+              }
+          }
+          if(child.size()%2==0)
+          {
+              child=ans;
+          }
+          else{
+            int start=ans.back();
+            ans.pop_back();
+            child.clear();
+            child.push_back(start);
+             for(int it: ans)
+             {
+                 child.push_back(it);
+
+            }
+          }
+    }
+    cout<<child[0];
+}
+int main()
+{
+    solve();
+}
